@@ -7,7 +7,7 @@ def safe_print_list(my_list=[], x=0):
     for j in range(x):
         try:
             print("{}".format(my_list[j]), end="")
-        except:
+        except IndexError:
             print("")
             return length
         count += 1
