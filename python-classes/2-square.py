@@ -2,6 +2,7 @@
 
 """ Define class square with optional instantiation: size """
 
+
 class Square:
     """
     A class that represents a square.
