@@ -1,107 +1,65 @@
 #!/usr/bin/python3
-
-"""
-Define a Square class.
-"""
+'''6-square.py: Script to print tuples of square position'''
 
 
 class Square:
-    """
-    Represent a square.
-    """
-
+    '''Creates  Square type'''
     def __init__(self, size=0, position=(0, 0)):
-        """
-        Initializes a Square object with a given size.
-
-        Args:
-            size (int): The size of the square (default is 0).
-            position (tuple): The position of the square (default is (0, 0)).
-        """
+        '''Initializes the square with position and size'''
         self.size = size
-        self.position = position
-
-    @property
-    def size(self):
-        """
-        Getter method for size.
-
-        Returns:
-            int: The size of the square.
-        """
-        return self.__size
-
-    @size.setter
-    def size(self, value):
-        """
-        Setter method for size.
-
-        Args:
-            value (int): The size of the square.
-
-        Raises:
-            TypeError: If size is not an integer.
-            ValueError: If size is less than 0.
-        """
-        if type(value) is not int:
-            raise TypeError("size must be an integer")
-        if value < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = value
+        try:
+            self.position = position
+        except TypeError as typ:
+            print(typ)
 
     @property
     def position(self):
-        """
-        Getter method for position.
-
-        Returns:
-            tuple: The position of the square.
-        """
+        '''Defines the position of the square'''
         return self.__position
 
     @position.setter
     def position(self, value):
-        """
-        Setter method for position.
-
-        Args:
-            value (tuple): The position of the square.
-
-        Raises:
-            TypeError: If position is not a tuple of 2 positive integers.
-        """
-        if type(value) is not tuple or len(value) != 2:
+        '''Defines function to set the position of square'''
+        if type(value) is not tuple:
+            self.__position = None
             raise TypeError("position must be a tuple of 2 positive integers")
-        for i in value:
-            if type(i) is not int or i < 0:
-                raise TypeError("must be a tuple of 2 pos integers")
-        self.__position = value
+        elif len(value) != 2:
+            self.__position = None
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif type(value[0]) is not int or type(value[1]) is not int:
+            self.__position = None
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif value[0] < 0 or value[1] < 0:
+            self.__position = None
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = value
+
+    @property
+    def size(self):
+        '''Defines the size of square and returns its value'''
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        '''Defines the value of size of square and checks if >= 0'''
+        self.__size = value
+        if type(value) is not int:
+            raise TypeError('size must be an integer')
+        if value < 0:
+            raise ValueError('size must be >= 0')
 
     def area(self):
-        """
-        Calculate the area of the square.
-
-        Returns:
-            int: The area of the square.
-        """
-        return self.size ** 2
+        '''Defines the area of a square'''
+        return self.__size * self.__size
 
     def my_print(self):
-        """
-        Print the square.
-
-        If size is 0, print an empty line.
-        the position by printing spaces before each line if position[1] > 0.
-        """
-        if self.size == 0:
-            print("")
-        for row in range(self.size):
-            if row == 0:
-                for i in range(self.position[1]):
-                    print("")
-            if self.position[0] > 0:
-                for j in range(self.position[0]):
-                    print("_", end="")
-            for col in range(self.size):
-                print("#", end="")
-            print("")
+        '''Prints square by position'''
+        if self.position:
+            if self.size > 0:
+                print('\n' * self.position[1], end="")
+                for a in range(self.__size):
+                    print(' ' * self.position[0], end="")
+                    print('#' * self.size)
+        if self.__size == 0:
+            print()
