@@ -27,3 +27,7 @@ def text_indentation(text):
             else:
                 print(i, end="")
                 last = False
+    # Remove leading and trailing spaces from each line
+    lines = [line.strip() for line in text.splitlines()]
+    formatted_text = "\n".join(lines)
+    print(formatted_text)
