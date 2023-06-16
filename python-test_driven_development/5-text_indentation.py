@@ -16,8 +16,8 @@ def text_indentation(text):
     tmp = tmp.replace("?", "?\n\n")
     p = tmp.splitlines(True)
     ls_strip = []
-    for l in p:
-        if l == "\n":
+    for line in p:
+        if line == "\n":
             ls_strip.append("\n")
         else:
             ls_strip.append(l.lstrip())
