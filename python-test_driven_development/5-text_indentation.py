@@ -1,33 +1,24 @@
 #!/usr/bin/python3
-"""This module contain a function that prints a text with new lines"""
+"""
+Function to replace some characters with '\n\n'
+"""
 
 
 def text_indentation(text):
     """
-    text_indentation function that prints text formatted
-    depending of the character identified (".", ":", "?")
-
-    Args:
-    text (str): parameter to be printed
+    Prints a text with 2 new lines after some characters.
     """
-    special_chars = [".", ":", "?"]
-    if type(text) != str:
+
+    if type(text) is not str:
         raise TypeError("text must be a string")
-    # flag to know if the last character was a special character
-    last = False
-    for i in text:
-        if i in special_chars:
-            print(i)
-            print()
-            last = True
+    tmp = text.replace(".", ".\n\n")
+    tmp = tmp.replace(":", ":\n\n")
+    tmp = tmp.replace("?", "?\n\n")
+    p = tmp.splitlines(True)
+    ls_strip = []
+    for l in p:
+        if l == "\n":
+            ls_strip.append("\n")
         else:
-            if last is True and i == " ":
-                last = False
-                continue
-            else:
-                print(i, end="")
-                last = False
-    # Remove leading and trailing spaces from each line
-    lines = [line.strip() for line in text.splitlines()]
-    formatted_text = "\n".join(lines)
-    print(formatted_text)
+            ls_strip.append(l.lstrip())
+    print("".join(ls_strip), end="")
