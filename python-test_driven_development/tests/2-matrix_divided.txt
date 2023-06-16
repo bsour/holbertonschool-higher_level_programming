@@ -1,45 +1,41 @@
->>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+#!/usr/bin/python3
+"""
+Module containing one function to divide a matrix by a given integer
+"""
 
->>> matrixA = [[1, 2, 3], [3, 4, 5], [5, 6, 7]]
->>> matrixB = [[1, 2, 3], [4, 5, 6]]
 
->>> print(matrix_divided(matrixA, 4))
-[[0.25, 0.5, 0.75], [0.75, 1.0, 1.25], [1.25, 1.5, 1.75]]
->>> print(matrix_divided(matrixB, 3))
-[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+def matrix_divided(matrix, div):
+    """
+    Simple function to divide a matrix by a given integer
 
-error input
->>> noneL = None
->>> empty_list = []
->>> empty_lists = [[], [], []]
->>> not_list = [42, [2, 5], [1, 2, 3]]
->>> not_all_num = [["blue", 1, 2], [3, 4, "f"], ["23b", 5, 6]]
->>> diff_len = [[1,3,3,3], [3,5,1,2,5], [2,5,8]]
+    Args:
+        matrix: matrix of integers or floats
+        div: int or float that each element in the matrix will be divided by
 
->>> matrix_divided(noneL, 3)
-Traceback (most recent call last):
-TypeError: matrix must be a matrix (list of lists) of integers/floats
+    Return:
+        a new matrix of quotients rounded to 2dp
+    """
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
 
->>> matrix_divided(empty_list, 2)
-Traceback (most recent call last):
-TypeError: matrix must be a matrix (list of lists) of integers/floats
+    if not isinstance(div, (int, float)):
+        raise TypeError("div must be a number")
+    for row in matrix:
+        for element in row:
+            if not isinstance(element, (int, float)):
+                raise TypeError("matrix must be a matrix (list of lists) of "
+                                "integers/floats")
 
->>> matrix_divided(empty_lists, 3)
-Traceback (most recent call last):
-TypeError: matrix must be a matrix (list of lists) of integers/floats
+    first_row_size = len(matrix[0])
+    for row in matrix:
+        if len(row) != first_row_size:
+            raise TypeError("Each row of the matrix must have the same size")
 
->>> matrix_divided(not_list, 2)
-Traceback (most recent call last):
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
->>> matrix_divided(not_all_num, 2)
-Traceback (most recent call last):
-TypeError: matrix must be a matrix (list of lists) of integers/floats
-
->>> print(matrix_divided(matrixA, 0))
-Traceback (most recent call last):
-ZeroDivisionError: division by zero
-
->>> matrix_divided(diff_len, 3)
-Traceback (most recent call last):
-TypeError: Each row of the matrix must have the same size
+    new_matrix = []
+    for row in matrix:
+        new_row = []
+        for element in row:
+            new_element = round(element / div, 2)
+            new_row.append(new_element)
+        new_matrix.append(new_row)
+    return new_matrix
