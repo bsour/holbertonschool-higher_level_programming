@@ -3,11 +3,12 @@
 
 
 def text_indentation(text):
-    """text_indentation function that prints text formatted
+    """
+    text_indentation function that prints text formatted
     depending of the character identified (".", ":", "?")
 
     Args:
-        text (str): parameter to be printed
+    text (str): parameter to be printed
     """
     special_chars = [".", ":", "?"]
     if type(text) != str:
