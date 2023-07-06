@@ -1,25 +1,16 @@
 #!/usr/bin/python3
+# 4-append_write.py
+# Carlos Barros <1543@holbertonschool.com>
+""" File name : 4-append_write.py
 """
-    2-read_lines.py
-    Reads n lines of a text file (UTF8) and prints it to stdout.
-"""
 
 
-def read_lines(filename="", nb_lines=0):
-    """Reads n lines of a text file (UTF8) and prints it to stdout."""
-    n_lines = 0
-    with open(filename, encoding='utf-8') as f:
-        for line in f:
-            n_lines += 1
+def append_write(filename="", text=""):
+    """append_write appends a string at the end of a text file (UTF8)
 
-    with open(filename, encoding='utf-8') as f:
-        if nb_lines <= 0 or nb_lines >= n_lines:
-            print(f.read(), end="")
-
-        n_lines = 0
-        for line in f:
-            n_lines += 1
-            if n_lines <= nb_lines:
-                print(line, end="")
-                continue
-            break
+    Args:
+        filename (str): Defaults to "".
+        text (str): text to add. Defaults to "".
+    """
+    with open(filename, 'a', encoding='utf-8') as f:
+        return f.write(text)
