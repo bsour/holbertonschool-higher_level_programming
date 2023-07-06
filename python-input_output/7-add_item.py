@@ -1,24 +1,15 @@
 #!/usr/bin/python3
-"""
-Adds all arguments to a Python list and saves them to a file.
-
-Usage: ./7-add_item.py [args]
-
-"""
-
+"""Add all arguments to a Python list and save them to a file."""
 import sys
-from os import path
-from json import dump, load
 
-filename = "add_item.json"
+if __name__ == "__main__":
+    save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+    load_from_json_file = \
+        __import__('6-load_from_json_file').load_from_json_file
 
-if path.isfile(filename):
-    with open(filename, 'r') as file:
-        items = load(file)
-else:
-    items = []
-
-items.extend(sys.argv[1:])
-
-with open(filename, 'w') as file:
-    dump(items, file)
+    try:
+        items = load_from_json_file("add_item.json")
+    except FileNotFoundError:
+        items = []
+    items.extend(sys.argv[1:])
+    save_to_json_file(items, "add_item.json")
