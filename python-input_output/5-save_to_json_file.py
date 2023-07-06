@@ -1,11 +1,15 @@
 #!/usr/bin/python3
-"""
-    5-to_json_string.py
-    Returns the JSON representation of an object (string):
+""" File name : 7-save_to_json_file.py
 """
 import json
 
 
-def to_json_string(my_obj):
-    """Returns the JSON representation of an object (string):"""
-    return json.dumps(my_obj)
+def save_to_json_file(my_obj, filename):
+    """save_to_json_file writes an Object to a text file
+
+    Args:
+        my_obj (obj): any object for example list, dict
+        filename: file name
+    """
+    with open(filename, 'w', encoding='utf-8') as f:
+        return(json.dump(my_obj, f))
