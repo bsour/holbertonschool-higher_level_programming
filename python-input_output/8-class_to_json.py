@@ -1,14 +1,13 @@
 #!/usr/bin/python3
+
+""" File name : 10-class_to_json.py
 """
-    6-from_json_string.py
-    Function that writes an Object to \
-    a text file, using a JSON representation.
-"""
-import json
 
 
-def load_from_json_file(filename):
-    """Function that writes an Object to \
-    a text file, using a JSON representation."""
-    with open(filename, encoding='utf-8') as f:
-        return json.loads(f.read())
+def class_to_json(obj):
+    """class_to_json return dictionary description with simple data structure
+
+    Args:
+        obj : any object for example list, dict
+    """
+    return obj.__dict__
