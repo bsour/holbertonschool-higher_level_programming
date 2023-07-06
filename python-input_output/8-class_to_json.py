@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """ File name : 10-class_to_json.py
 """
 
