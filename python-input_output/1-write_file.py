@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-# 3-write_file.py
-# Carlos Barros <1543@holbertonschool.com>
 """ File name : 3-write_file.py
 """
 
