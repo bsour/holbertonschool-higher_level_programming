@@ -1,15 +1,14 @@
 #!/usr/bin/python3
+""" File name : 6-from_json_string.py
 """
-    4-append_write.py
-    Function that appends a string at \
-    the end of a text file (UTF8) and \
-    returns the number of characters added.
-"""
+import json
 
 
-def append_write(filename="", text=""):
-    """function that appends a string at \
-    the end of a text file (UTF8) and returns\
-    the number of characters added"""
-    with open(filename, mode='a', encoding='utf-8') as f:
-        return f.write(text)
+def from_json_string(my_str):
+    """from_json_string  returns an object
+    (Python data structure) represented by a JSON string
+
+    Args:
+        my_str (obj): any object for example list, dict
+    """
+    return(json.loads(my_str))
