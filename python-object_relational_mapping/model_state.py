@@ -7,6 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # Create an instance of declarative_base
 Base = declarative_base()
 
+
 # Define the State class
 class State(Base):
     """State class to represent the states table in the database"""
@@ -24,4 +25,3 @@ class State(Base):
 
     def __repr__(self):
         return "<State(name='%s')>" % self.name
-        
