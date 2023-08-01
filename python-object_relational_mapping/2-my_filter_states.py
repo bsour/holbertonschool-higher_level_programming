@@ -12,7 +12,7 @@ if __name__ == "__main__":
     state_arg = sys.argv[4]
     cur = db.cursor()
     cur.execute("SELECT * FROM states \
-    WHERE name LIKE '{}';".format(state_arg))
+    WHERE BINARY name = '{}';".format(state_arg))
     rows = cur.fetchall()
     for row in rows:
         print(row)
