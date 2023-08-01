@@ -6,6 +6,7 @@ Class definition of a City and an instance Base = declarative_base()
 from sqlalchemy import Column, Integer, String, ForeignKey
 from model_state import Base
 
+
 class City(Base):
     """Class definition of a City"""
     __tablename__ = 'cities'
