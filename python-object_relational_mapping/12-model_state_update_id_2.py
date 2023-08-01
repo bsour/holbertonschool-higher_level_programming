@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that prints first State objects from the database hbtn_0e_6_usa
+Script that changes the name of a State object from the database hbtn_0e_6_usa
 """
 
 from sqlalchemy import create_engine
@@ -21,11 +21,14 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    state_name = "New Mexico"
 
-    state = session.query(State).filter(State.name == state_name).first()
+    state_id = 2
+    new_name = "New Mexico"
+
+    state = session.query(State).get(state_id)
     if state:
-        print(state.id)
+        state.name = new_name
+        session.commit()
     else:
         print("Not found")
 
