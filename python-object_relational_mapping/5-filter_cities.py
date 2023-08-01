@@ -11,12 +11,11 @@ if __name__ == "__main__":
                          db=sys.argv[3])
     state_name = sys.argv[4]
     cur = db.cursor()
-    query = "SELECT GROUP_CONCAT(name SEPARATOR ', ') FROM cities INNER JOIN \
-    states ON cities.state_id = states.id WHERE \
-    states.name = %s ORDER BY cities.id ASC;"
+    query = "SELECT cities.name FROM cities INNER JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id ASC;"
     cur.execute(query, (state_name,))
-    result = cur.fetchone()
-    if result[0]:
-        print(result[0])
+    rows = cur.fetchall()
+    for row in rows:
+        print(row[0])
     cur.close()
     db.close()
+    
