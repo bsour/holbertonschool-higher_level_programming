@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# State class definition that inherits from Base
+""" State class definition that inherits from Base """
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
