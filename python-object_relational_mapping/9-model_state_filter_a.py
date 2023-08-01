@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
 Lists all State objects that contain the letter 'a' from the database hbtn_0e_6_usa
+id: name
+Usage:
+    ./9-model_state_filter_a.py <mysql_username> <mysql_password> <database_name>
 """
 
 import sys
